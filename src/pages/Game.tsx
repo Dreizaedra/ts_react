@@ -16,6 +16,7 @@ export default function Game(): ReactElement {
         addResourceCount,
         time,
         addTime,
+        grid
     } = useGame();
 
     const navigate = useNavigate();
@@ -46,9 +47,25 @@ export default function Game(): ReactElement {
 
     useEffect(() => {
         if (time % 5 === 0) {
+            const forestResources = { "food": 0, "wood": 0 };
+
+            grid.forEach(row => {
+                row.forEach(tile => {
+                    if (tile.type === "forest") {
+                        forestResources.food += tile.workers;
+                        forestResources.wood += tile.workers;
+                    }
+                });
+            });
+
+            addResourceCount("food", forestResources.food);
+            addResourceCount("wood", forestResources.wood);
+        }
+
+        if (time % 10 === 0) {
             addResourceCount("food", -survivor.count);
         }
-    }, [time]);
+    }, [time, grid]);
 
     useEffect(() => {
         if (food.count <= 0) {

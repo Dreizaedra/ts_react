@@ -1,37 +1,37 @@
 [
   [
-    {"type": "forest"},
-    {"type": "forest"},
-    {"type": "forest"},
-    {"type": null},
-    {"type": null}
+    {"type": "forest", "workers": 0},
+    {"type": "forest", "workers": 0},
+    {"type": "forest", "workers": 0},
+    {"type": null, "workers": 0},
+    {"type": null, "workers": 0}
   ],
   [
-    {"type": "forest"},
-    {"type": null},
-    {"type": null},
-    {"type": null},
-    {"type": null}
+    {"type": "forest", "workers": 0},
+    {"type": null, "workers": 0},
+    {"type": null, "workers": 0},
+    {"type": null, "workers": 0},
+    {"type": null, "workers": 0}
   ],
   [
-    {"type": null},
-    {"type": null},
-    {"type": null},
-    {"type": null},
-    {"type": null}
+    {"type": null, "workers": 0},
+    {"type": null, "workers": 0},
+    {"type": null, "workers": 0},
+    {"type": null, "workers": 0},
+    {"type": null, "workers": 0}
   ],
   [
-    {"type": null},
-    {"type": null},
-    {"type": "forest"},
-    {"type": null},
-    {"type": null}
+    {"type": null, "workers": 0},
+    {"type": null, "workers": 0},
+    {"type": "forest", "workers": 0},
+    {"type": null, "workers": 0},
+    {"type": null, "workers": 0}
   ],
   [
-    {"type": "forest"},
-    {"type": null},
-    {"type": "forest"},
-    {"type": "mountain"},
-    {"type": "mountain"}
+    {"type": "forest", "workers": 0},
+    {"type": null, "workers": 0},
+    {"type": "forest", "workers": 0},
+    {"type": "mountain", "workers": 0},
+    {"type": "mountain", "workers": 0}
   ]
 ]

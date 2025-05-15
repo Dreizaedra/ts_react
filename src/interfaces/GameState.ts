@@ -16,6 +16,7 @@ export default interface GameState {
     getTop5: () => Score[];
     // Resources
     survivor: Resource;
+    workingSurvivors: number;
     food: Resource;
     wood: Resource;
     stone: Resource;
@@ -24,6 +25,7 @@ export default interface GameState {
     // Map
     grid: Tile[][];
     createHouse: (tile: Tile) => Tile;
+    assignToForest: (tile: Tile) => Tile;
     updateTileType: (newType: TileType, rowIndex: number, colIndex: number) => void;
     // Settings
     time: number;

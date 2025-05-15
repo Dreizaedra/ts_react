@@ -19,6 +19,7 @@ export const useGame = create<GameState>((set, get) => ({
         "count": 2,
         "limit": 10,
     },
+    workingSurvivors: 0,
     food: {
         "icon": foodIcon,
         "alt": "food icon",
@@ -89,17 +90,25 @@ export const useGame = create<GameState>((set, get) => ({
 
         return tile;
     },
+    assignToForest(tile: Tile): Tile {
+        const { survivor, workingSurvivors } = get();
+
+        if (survivor.count >= 1 && survivor.count > workingSurvivors) {
+            tile.workers += 1;
+            set({workingSurvivors: workingSurvivors + 1});
+        }
+
+        return tile;
+    },
     updateTileType: (newType: TileType, rowIndex: number, colIndex: number): void => {
-        const { grid, createHouse } = get();
+        const { grid, createHouse, assignToForest } = get();
 
         const updatedTiles = grid.map((row: Tile[]) => row.map((tile: Tile) => ({ ...tile })));
         let tile = updatedTiles[rowIndex][colIndex];
 
-        if (tile.type !== null) {
-            return;
-        }
-
-        if (newType === 'house') {
+        if (tile.type === "forest") {
+            tile = assignToForest(tile);
+        } else if (newType === 'house' && tile.type !== "house") {
             tile = createHouse(tile);
         }
 

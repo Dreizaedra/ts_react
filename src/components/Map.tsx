@@ -38,17 +38,27 @@ export default function Map(): ReactElement {
                                 key={getId()}
                                 className="
                                     bg-gray-700
-                                    w-16 h-16 
-                                    flex items-center justify-center 
-                                    rounded-md shadow-md 
+                                    w-16 h-16
+                                    flex items-center justify-center
+                                    rounded-md shadow-md
                                     cursor-pointer
                                     transition-all duration-300
                                     hover:opacity-80 hover:scale-105
                                     border border-white/10
+                                    relative
                                 "
                                 onClick={() => updateTileType("house", rowIndex, colIndex)}
                             >
                                 {renderCellIcon(tile)}
+                                {tile.workers !== 0 && (
+                                    <div
+                                        className="absolute inline-flex items-center justify-center
+                                        w-5 h-5 text-xs font-bold text-white bg-red-500 border-2 z-10
+                                        border-white rounded-full -top-1 -right-1 dark:border-gray-900"
+                                    >
+                                        {tile.workers}
+                                    </div>
+                                )}
                             </div>
                         ))
                     ))}
