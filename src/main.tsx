@@ -8,7 +8,7 @@ import Leaderboard from "./pages/Leaderboard.tsx";
 import Error404 from "./pages/errors/Error404.tsx";
 
 createRoot(document.getElementById('root')!).render(
-    <BrowserRouter>
+    <BrowserRouter basename="/ts_react/">
         <Routes>
             <Route path="*" element={<Error404 />} />
             <Route index element={<Home version={packageJson.version} />} />
