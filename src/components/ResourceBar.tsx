@@ -1,13 +1,14 @@
 import { getId } from "../helpers.ts";
 import type { ReactElement } from "react";
-import type { Resource } from "../hooks/useGame.ts";
+import type ResourceBarAttributes from "../interfaces/ResourceBarAttributes.ts";
+import type Resource from "../interfaces/Resource.ts";
 
 
 
 export default function ResourceBar({ resources }: ResourceBarAttributes): ReactElement {
     return (
         <div className="flex items-center space-x-4 bg-black/40 rounded-full px-4 py-1">
-            {resources.map((resource) => (
+            {resources.map((resource: Resource) => (
                 <div
                     key={getId()}
                     className="flex items-center cursor-pointer hover:bg-white/20 rounded transition-colors duration-200"

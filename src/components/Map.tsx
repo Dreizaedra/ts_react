@@ -3,7 +3,8 @@ import { getId } from "../helpers.ts";
 import forestIcon from "../assets/icons/tree.svg";
 import houseIcon from "../assets/icons/shed.svg";
 import mountainIcon from "../assets/icons/mountain.svg";
-import { type Tile, useGame } from "../hooks/useGame.ts";
+import { useGame } from "../hooks/useGame.ts";
+import type Tile from "../interfaces/Tile.ts";
 
 export default function Map(): ReactElement {
     const { grid, updateTileType } = useGame();
