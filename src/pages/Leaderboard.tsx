@@ -1,8 +1,8 @@
-import reactLogo from "../assets/react.svg";
+import reactLogo from "@/assets/react.svg";
 import { type FormEvent, type ReactElement, useState } from "react";
 import { Link } from "react-router";
-import { getId } from "../helpers.ts";
-import { useGame } from "../hooks/useGame.ts";
+import { getId } from "@/helpers.ts";
+import { useGame } from "@/hooks/useGame.ts";
 
 export default function Leaderboard(): ReactElement {
     const [username, setUsername] = useState("");

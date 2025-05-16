@@ -1,6 +1,6 @@
 import type { ReactElement } from "react";
 import { Link } from "react-router";
-import GameIcon from "../../assets/icons/shed.svg";
+import GameIcon from "@/assets/icons/shed.svg";
 
 export default function Error404(): ReactElement {
     return (

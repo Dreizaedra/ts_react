@@ -1,6 +1,6 @@
 import { type ReactElement } from "react";
-import { getId } from "../helpers.ts";
-import type QuestListAttributes from "../interfaces/QuestListAttributes.ts";
+import { getId } from "@/helpers.ts";
+import type QuestListAttributes from "@/interfaces/QuestListAttributes.ts";
 
 export default function QuestList({ list, onValidateQuest }: QuestListAttributes): ReactElement {
     const lastCompletedIndex: number = list.findLastIndex(q => q.isCompleted);

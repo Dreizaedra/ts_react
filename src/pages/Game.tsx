@@ -1,11 +1,11 @@
-import questList from "../data/quests.json";
+import questList from "@/data/quests.json";
 import { type ReactElement, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router";
 import { ArrowLeft } from "lucide-react";
-import QuestList from "../components/QuestList.tsx";
-import Map from "../components/Map.tsx";
-import ResourceBar from "../components/ResourceBar.tsx";
-import { useGame } from "../hooks/useGame.ts";
+import QuestList from "@/components/QuestList.tsx";
+import Map from "@/components/Map.tsx";
+import ResourceBar from "@/components/ResourceBar.tsx";
+import { useGame } from "@/hooks/useGame.ts";
 
 export default function Game(): ReactElement {
     const {

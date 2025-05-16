@@ -1,11 +1,11 @@
 import { createRoot } from "react-dom/client";
-import "./index.css";
+import "@/index.css";
 import { BrowserRouter, Route, Routes } from "react-router";
-import Home from "./pages/Home.tsx";
+import Home from "@/pages/Home.tsx";
 import packageJson from "../package.json";
-import Game from "./pages/Game.tsx";
-import Leaderboard from "./pages/Leaderboard.tsx";
-import Error404 from "./pages/errors/Error404.tsx";
+import Game from "@/pages/Game.tsx";
+import Leaderboard from "@/pages/Leaderboard.tsx";
+import Error404 from "@/pages/errors/Error404.tsx";
 
 createRoot(document.getElementById('root')!).render(
     <BrowserRouter basename="/ts_react/">

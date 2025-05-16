@@ -1,7 +1,7 @@
 import { type ReactElement } from "react";
-import GameIcon from "../assets/icons/shed.svg";
+import GameIcon from "@/assets/icons/shed.svg";
 import { Link } from "react-router";
-import type MenuAttributes from "../interfaces/MenuAttributes.ts";
+import type MenuAttributes from "@/interfaces/MenuAttributes.ts";
 
 export default function Home({ version }: MenuAttributes): ReactElement {
     const subtitles: string[] = [

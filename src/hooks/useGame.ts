@@ -1,15 +1,15 @@
 import { create } from "zustand";
-import survivorIcon from "../assets/icons/survivor.svg";
-import foodIcon from "../assets/icons/meat.svg";
-import woodIcon from "../assets/icons/wood.svg";
-import stoneIcon from "../assets/icons/stone.svg";
-import mapGrid from "../data/map.json";
-import type GameState from "../interfaces/GameState.ts";
-import type Tile from "../interfaces/Tile.ts";
-import type Score from "../interfaces/Score.ts";
-import type { ResourceType } from "../types/ResourceType.ts";
-import type Resource from "../interfaces/Resource.ts";
-import type { TileType } from "../types/TileType.ts";
+import survivorIcon from "@/assets/icons/survivor.svg";
+import foodIcon from "@/assets/icons/meat.svg";
+import woodIcon from "@/assets/icons/wood.svg";
+import stoneIcon from "@/assets/icons/stone.svg";
+import mapGrid from "@/data/map.json";
+import type GameState from "@/interfaces/GameState.ts";
+import type Tile from "@/interfaces/Tile.ts";
+import type Score from "@/interfaces/Score.ts";
+import type { ResourceType } from "@/types/ResourceType.ts";
+import type Resource from "@/interfaces/Resource.ts";
+import type { TileType } from "@/types/TileType.ts";
 
 export const useGame = create<GameState>((set, get) => ({
     scores: [],

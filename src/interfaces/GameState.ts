@@ -1,8 +1,8 @@
-import type { ResourceType } from "../types/ResourceType";
-import type { TileType } from "../types/TileType";
-import type Resource from "./Resource";
-import type Score from "./Score";
-import type Tile from "./Tile";
+import type { ResourceType } from "@/types/ResourceType";
+import type { TileType } from "@/types/TileType.ts";
+import type Score from "@/interfaces/Score.ts";
+import type Resource from "@/interfaces/Resource.ts";
+import type Tile from "@/interfaces/Tile.ts";
 
 /**
  * Represents the state of the game, including leaderboard, resources, map, and game reset functionality.
