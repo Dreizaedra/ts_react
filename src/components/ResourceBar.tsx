@@ -1,7 +1,7 @@
-import { getId } from "@/helpers.ts";
+import { getId } from "@app/helpers.ts";
 import type { ReactElement } from "react";
-import type ResourceBarAttributes from "@/interfaces/props/ResourceBarAttributes.ts";
-import type Resource from "@/interfaces/Resource.ts";
+import type ResourceBarAttributes from "@app/interfaces/props/ResourceBarAttributes.ts";
+import type Resource from "@app/interfaces/Resource.ts";
 
 export default function ResourceBar({ resources, workers }: ResourceBarAttributes): ReactElement {
     return (

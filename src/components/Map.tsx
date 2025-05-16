@@ -1,10 +1,10 @@
 import { type ReactElement } from "react";
-import { getId } from "@/helpers.ts";
-import forestIcon from "@/assets/icons/tree.svg";
-import houseIcon from "@/assets/icons/shed.svg";
-import mountainIcon from "@/assets/icons/mountain.svg";
-import { useGame } from "@/hooks/useGame.ts";
-import type Tile from "@/interfaces/Tile.ts";
+import { getId } from "@app/helpers.ts";
+import forestIcon from "@app/assets/icons/tree.svg";
+import houseIcon from "@app/assets/icons/shed.svg";
+import mountainIcon from "@app/assets/icons/mountain.svg";
+import { useGame } from "@app/hooks/useGame.ts";
+import type Tile from "@app/interfaces/Tile.ts";
 
 export default function Map(): ReactElement {
     const { grid, updateTileType } = useGame();

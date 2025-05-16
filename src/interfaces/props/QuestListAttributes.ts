@@ -1,4 +1,4 @@
-import type Quest from "@/interfaces/Quest.ts";
+import type Quest from "@app/interfaces/Quest.ts";
 
 export default interface QuestListAttributes {
     list: Quest[];

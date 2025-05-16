@@ -1,7 +1,7 @@
 import { type ReactElement } from "react";
-import GameIcon from "@/assets/icons/shed.svg";
+import GameIcon from "@app/assets/icons/shed.svg";
 import { Link } from "react-router";
-import type HomeAttributes from "@/interfaces/props/HomeAttributes.ts";
+import type HomeAttributes from "@app/interfaces/props/HomeAttributes.ts";
 
 export default function Home({ version }: HomeAttributes): ReactElement {
     const subtitles: string[] = [
