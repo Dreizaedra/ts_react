@@ -10,6 +10,8 @@ import type Score from "@app/interfaces/Score.ts";
 import type { ResourceType } from "@app/types/ResourceType.ts";
 import type Resource from "@app/interfaces/Resource.ts";
 import type { TileType } from "@app/types/TileType.ts";
+import type { SeasonType } from "@app/types/SeasonType.ts";
+import type { Dispatch, SetStateAction } from "react";
 
 export const useGame = create<GameState>((set, get) => ({
     scores: [],
@@ -34,8 +36,32 @@ export const useGame = create<GameState>((set, get) => ({
         "alt": "stone icon",
         "count": 0,
     },
+    season: "summer" as SeasonType,
     grid: mapGrid as Tile[][],
     time: 0,
+    harvestForestResources: (): void => {
+        const { grid, season, addResourceCount } = get();
+        const forestResources = { "food": 0, "wood": 0 };
+
+        grid.forEach(row => {
+            row.forEach(tile => {
+                if (tile.type === "forest") {
+                    if (season === "summer") {
+                        forestResources.food += tile.workers;
+                    }
+                    forestResources.wood += tile.workers;
+                }
+            });
+        });
+
+        addResourceCount("food", forestResources.food);
+        addResourceCount("wood", forestResources.wood);
+    },
+    switchSeason: (openModal: Dispatch<SetStateAction<boolean>>) => {
+        const { season } = get();
+        set({season: season === "winter" ? "summer" : "winter"});
+        openModal(true);
+    },
     registerScore: (newScore: Score): void => {
         // Checking for cheeky cheaters
         if (get().time === newScore.value) {
@@ -97,7 +123,8 @@ export const useGame = create<GameState>((set, get) => ({
         updatedTiles[rowIndex][colIndex] = tile;
         set({ grid: updatedTiles });
     },
-    addTime: (value: number): void => set({time: get().time + value}),
+    start: (): NodeJS.Timeout => setInterval(() => set({time: get().time + 1}), 1000),
+    end: (timer: NodeJS.Timeout): void => clearInterval(timer),
     reset: (): void => {
         const { survivor, food, wood, stone } = get();
 
@@ -121,6 +148,7 @@ export const useGame = create<GameState>((set, get) => ({
             time: 0,
             grid: mapGrid as Tile[][],
             workingSurvivors: 0,
+            season: "summer" as SeasonType,
         });
     }
 }));

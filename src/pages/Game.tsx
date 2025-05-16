@@ -6,6 +6,7 @@ import QuestList from "@app/components/QuestList.tsx";
 import Map from "@app/components/Map.tsx";
 import ResourceBar from "@app/components/ResourceBar.tsx";
 import { useGame } from "@app/hooks/useGame.ts";
+import SeasonPopUp from "@app/components/SeasonPopUp.tsx";
 
 export default function Game(): ReactElement {
     const {
@@ -16,14 +17,19 @@ export default function Game(): ReactElement {
         stone,
         addResourceCount,
         time,
-        addTime,
-        grid
+        start,
+        end,
+        season,
+        harvestForestResources,
+        switchSeason
     } = useGame();
 
     const navigate = useNavigate();
 
     // Getting quests from json file
     const [quests, setQuests] = useState(questList);
+
+    const [isSeasonPopUpOpen, setIsSeasonPopUpOpen] = useState(false);
 
     /**
      * Marks a quest as completed by updating its `isCompleted` property to `true`.
@@ -37,36 +43,25 @@ export default function Game(): ReactElement {
     }
 
     useEffect(() => {
-        const timer = setInterval(() => {
-            addTime(1);
-        }, 1000);
-
-        return () => {
-            clearInterval(timer);
-        };
+        const timer = start();
+        return () => end(timer);
     }, []);
 
     useEffect(() => {
-        if (time % 5 === 0) {
-            const forestResources = { "food": 0, "wood": 0 };
+        if (time > 0) {
+            if (time % 5 === 0) {
+                harvestForestResources();
+            }
 
-            grid.forEach(row => {
-                row.forEach(tile => {
-                    if (tile.type === "forest") {
-                        forestResources.food += tile.workers;
-                        forestResources.wood += tile.workers;
-                    }
-                });
-            });
+            if (time % 10 === 0) {
+                addResourceCount("food", -survivor.count);
+            }
 
-            addResourceCount("food", forestResources.food);
-            addResourceCount("wood", forestResources.wood);
+            if (time % 20 === 0) {
+                switchSeason(setIsSeasonPopUpOpen);
+            }
         }
-
-        if (time % 10 === 0) {
-            addResourceCount("food", -survivor.count);
-        }
-    }, [time, grid]);
+    }, [time]);
 
     useEffect(() => {
         if (food.count <= 0) {
@@ -95,6 +90,7 @@ export default function Game(): ReactElement {
                 <ResourceBar
                     resources={[survivor, food, wood, stone]}
                     workers={workingSurvivors}
+                    season={season}
                 />
             </div>
 
@@ -106,6 +102,11 @@ export default function Game(): ReactElement {
                     onValidateQuest={validateQuest}
                 />
             </div>
+
+            <SeasonPopUp
+                isOpen={isSeasonPopUpOpen}
+                setOpen={setIsSeasonPopUpOpen}
+            />
         </div>
     );
 }
