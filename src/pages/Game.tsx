@@ -10,6 +10,7 @@ import { useGame } from "../hooks/useGame.ts";
 export default function Game(): ReactElement {
     const {
         survivor,
+        workingSurvivors,
         food,
         wood,
         stone,
@@ -93,6 +94,7 @@ export default function Game(): ReactElement {
 
                 <ResourceBar
                     resources={[survivor, food, wood, stone]}
+                    workers={workingSurvivors}
                 />
             </div>
 

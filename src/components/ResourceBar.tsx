@@ -3,9 +3,7 @@ import type { ReactElement } from "react";
 import type ResourceBarAttributes from "../interfaces/ResourceBarAttributes.ts";
 import type Resource from "../interfaces/Resource.ts";
 
-
-
-export default function ResourceBar({ resources }: ResourceBarAttributes): ReactElement {
+export default function ResourceBar({ resources, workers }: ResourceBarAttributes): ReactElement {
     return (
         <div className="flex items-center space-x-4 bg-black/40 rounded-full px-4 py-1">
             {resources.map((resource: Resource) => (
@@ -19,8 +17,9 @@ export default function ResourceBar({ resources }: ResourceBarAttributes): React
                         className="w-8 h-8 mr-1"
                     />
                     <span className="text-sm text-white font-bold">
-                {resource.count}{resource.limit !== null && `/${resource.limit}`}
-            </span>
+                        {resource.alt === "survivor icon" && `${workers}/`}
+                        {resource.count}
+                    </span>
                 </div>
             ))}
         </div>

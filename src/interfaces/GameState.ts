@@ -21,7 +21,6 @@ export default interface GameState {
     wood: Resource;
     stone: Resource;
     addResourceCount: (type: ResourceType, value: number) => void;
-    addResourceLimit: (type: ResourceType, value: number) => void;
     // Map
     grid: Tile[][];
     createHouse: (tile: Tile) => Tile;

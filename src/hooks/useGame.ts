@@ -17,26 +17,22 @@ export const useGame = create<GameState>((set, get) => ({
         "icon": survivorIcon,
         "alt": "survivor icon",
         "count": 2,
-        "limit": 10,
     },
     workingSurvivors: 0,
     food: {
         "icon": foodIcon,
         "alt": "food icon",
         "count": 20,
-        "limit": null,
     },
     wood: {
         "icon": woodIcon,
         "alt": "wood icon",
         "count": 50,
-        "limit": null,
     },
     stone: {
         "icon": stoneIcon,
         "alt": "stone icon",
         "count": 0,
-        "limit": null,
     },
     grid: mapGrid as Tile[][],
     time: 0,
@@ -60,23 +56,9 @@ export const useGame = create<GameState>((set, get) => ({
         set({
             [type]: {
                 ...currentResource,
-                count: currentResource.limit !== null
-                    ? Math.min(currentResource.count + value, currentResource.limit)
-                    : currentResource.count + value
+                count: currentResource.count + value
             }
         });
-    },
-    addResourceLimit: (type: ResourceType, value: number): void => {
-        const currentResource = get()[type];
-
-        if (currentResource.limit !== null) {
-            set({
-                [type]: {
-                    ...currentResource,
-                    limit: currentResource.limit + value
-                }
-            });
-        }
     },
     createHouse(tile: Tile): Tile {
         const { wood, addResourceCount } = get();
@@ -123,25 +105,22 @@ export const useGame = create<GameState>((set, get) => ({
             survivor: {
                 ...survivor,
                 count: 2,
-                limit: 10,
             },
             food: {
                 ...food,
                 count: 20,
-                limit: null,
             },
             wood: {
                 ...wood,
                 count: 50,
-                limit: null,
             },
             stone: {
                 ...stone,
                 count: 0,
-                limit: null,
             },
             time: 0,
             grid: mapGrid as Tile[][],
+            workingSurvivors: 0,
         });
     }
 }));
