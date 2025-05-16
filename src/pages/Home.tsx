@@ -1,9 +1,9 @@
 import { type ReactElement } from "react";
 import GameIcon from "@/assets/icons/shed.svg";
 import { Link } from "react-router";
-import type MenuAttributes from "@/interfaces/MenuAttributes.ts";
+import type HomeAttributes from "@/interfaces/props/HomeAttributes.ts";
 
-export default function Home({ version }: MenuAttributes): ReactElement {
+export default function Home({ version }: HomeAttributes): ReactElement {
     const subtitles: string[] = [
         "Survive the Chaos",
         "Outlast and Overcome",
